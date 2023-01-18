@@ -18,7 +18,7 @@ source .venv/bin/activate
 
 poetry install 
 # or
-# pip install -r requrements.txt
+# pip install -r requirements.txt
 ```
 
 ## Steps to reproduce
