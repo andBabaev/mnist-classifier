@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = "Mnist classifier"
+authors = ["Andrey Babaev <babaev.andrei2011@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+torch = {url = "https://download.pytorch.org/whl/cpu/torch-1.13.1%2Bcpu-cp310-cp310-linux_x86_64.whl"}
+torchvision = "^0.14.1"
+jupyter = "^1.0.0"
+black = "^22.12.0"
+mypy = "^0.991"
+scikit-learn = "^1.2.0"
+click = "^8.1.3"
+pandas = "^1.5.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
