@@ -1,6 +1,7 @@
 from typing import List, Optional, Tuple, Union
 
 import torch
+from PIL import Image
 from torch.utils.data import Dataset
 from tqdm import tqdm
 
@@ -28,9 +29,10 @@ class MNISTDataset(Dataset):
         preprocess_fn : _type_, optional
             Function for preprocessing of inputs, by default None
         """
-        self.images = []
+        self.images: List[Image.Image] = []
         for img_path in tqdm(img_paths, unit="images"):
             self.images.append(read_img(img_path))
+
         self.labels = labels
         self.n_classes = n_classes
         self.preprocess_fn = preprocess_fn
@@ -56,7 +58,7 @@ class MNISTDataset(Dataset):
         label_ohe[label] = 1
         return torch.FloatTensor(label_ohe)
 
-    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, Union[torch.Tensor, None]]:
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
 
         image = self.images[idx]
         if self.preprocess_fn is not None:
@@ -64,7 +66,7 @@ class MNISTDataset(Dataset):
 
         if self.labels is not None:
             label = self.get_processed_label(idx)
-        else:
+        else:  # for `inference` mode
             label = torch.FloatTensor()
 
         return preproc_image, label

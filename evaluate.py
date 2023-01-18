@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 @click.command()
 @click.option(
-    " --ground-truth",
+    "--ground-truth",
     "-gt",
     "ground_truth",
     show_default=True,

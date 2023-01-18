@@ -3,7 +3,7 @@ import torch.nn.functional as F
 
 
 class MNISTclassifier(nn.Module):
-    def __init__(self, n_classes=10):
+    def __init__(self, n_classes: int = 10):
         super().__init__()
         self.n_classes = n_classes
         self.conv1 = nn.Conv2d(1, 16, kernel_size=(5, 5))
